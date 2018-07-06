@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>OESdebug Doc</title>
+
+		<style>
+			header h1{
+				text-align:center;
+				color:green;
+			}
+			.putInTitle{
+				font-weight:bold;
+				color: green;
+				margin:15px;
+			}
+
+			table {
+			    border-collapse: collapse;
+			    width: 100%;
+			}
+
+			th, td {
+			    text-align: left;
+			    padding: 8px;
+			}
+
+			tr:nth-child(even){background-color: #f2f2f2}
+
+			th {
+			    background-color: #4CAF50;
+			    color: white;
+			}
+
+			.showInTable{
+				color:orange;
+				font-weight:bold;
+			}
+			
+			nav ul {
+			    list-style-type: none;
+			    margin: 0;
+			    padding: 0;
+			    overflow: hidden;
+			    background-color: #333;
+			}
+
+			nav li {
+			    float: left;
+			    border-right:1px solid #bbb;
+			}
+
+			nav li:last-child {
+			    border-right: none;
+			}
+
+			nav li a {
+			    display: block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px 16px;
+			    text-decoration: none;
+			}
+
+			nav li a:hover:not(.active) {
+			    background-color: #111;
+			}
+
+			.active {
+			    background-color: #4CAF50;
+			}
+		</style>
+
+	</head>
+	
+	<body>
+		<header>
+			<div id="mainLogo">
+				<h1>OESdebug Doc</h1>
+				<img src="" title="icon_OESdebug"/>
+			</div>
+			
+			<nav>
+				<ul>
+					<li><a href="index.html" class="active">OESdebug Documentation</a></li>
+					
+					<li><a href="jtag-tutorial.html">JTAG Tutorial</a></li>
+
+					<li><a href="openocd-syntax.html">OpenOCD syntax made easy</a></li>
+
+				</ul>
+			</nav>
+
+			<h3>Open Easy debug (OESdebug) is a wrapper program which facilitates the use of <a href="http://openocd.org/">OpenOCD<a/> </h3>		
+		</header>
+
+			
+		<article>
+			<aside>
+				<ol>
+					<li><a href="#OpenOCD-support">OPENOCD Support</a></li>
+					<li><a href="#adapter-support">Adapter Support</a></li>
+					<li><a href="#MCU-Support">MCU Support</a></li>
+					<li><a href="#config-file">Config File</a></li>
+					
+					<li><a href="#Menu-bar">Menu bar</a></li>
+	
+				</ol>
+			</aside>
+			<section>
+				<ol>
+					<li class="putInTitle" id="OpenOCD-support">OPENOCD Support : </li>
+						This window tries to detect if OpenOCD is correctly installed on the system.
+<div style="text-align:center;">
+<img src="img/OESdebug-openocd-support-intro.png" alt="Check For OpenOCD support" />
+</div>
+						<ul>
+							<li style="font-weight:bold;">OpenOCD installed from repository : </li> Most of the time, We can take this solution and install OpenOCD from repository <mark><em>(apt-get install openocd)</em></mark>, OESdebug will produce the following output depending on :
+				<ul>
+					<li><strong>OpenOCD was detected : </strong> If OpenOCD was detected, OESdebug will render the image shown below.</li> 
+				<div style="text-align:center;">	
+<img src="img/openocd-detected-automatic.png" alt="OpenOCD was detected" width="250px"/>					</div>
+					<li><strong>OpenOCD was not detected : </strong>If OpenOCD is not detected (not installed from repository), OESdebug will fail to locate it and returns the output shown below.</li> 
+				<div style="text-align:center;">
+<img src="img/openocd-not-detected.png" alt="OpenOCD was not detected" width="250px"/>
+				</div>
+				</ul>
+		
+							<li style="font-weight:bold;">OpenOCD installed from sources : </li> If OpenOCD was compiled from the sources, We can indicate to OESdebug the location of the folder (the folder must be the root directory of your OpenOCD which means the folder that contains the <em>tcl folder</em>)
+				<div style="text-align:center;">
+<img src="img/manual-openocd-detected.png" alt="OpenOCD was not detected" width="350px"/>
+				</div>
+<strong><em>Remark : </em></strong> Make sur that the message <em style="color:green;">OpenOCD was found!</em> is printed.
+						</ul>
+<br/>
+<div>
+<table>
+	<tr><th>Button</th><th>Function</th></tr>
+
+	<tr>
+		<td class="showInTable">
+			Install OpenOCD		
+		</td> 
+		
+		<td>
+			If OpenOCD is neither installed on the system nor compiled from sources, We can use this button to quickly install OpenOCD from repository.
+				<div style="text-align:center;">
+<img src="img/install-openocd-from-repository.png" alt="Install OpenOCD from repository" width="350px"/>
+				</div>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td class="showInTable">
+			Check again OpenOCD support		
+		</td> 
+		
+		<td>
+			After installing OpenOCD using "Install OpenOCD", We need to check again if it was installed. 
+		</td>
+	</tr>
+
+	<tr>
+		<td class="showInTable">
+			Next		
+		</td> 
+		
+		<td>
+			Moves to Adapter Support
+		</td>
+	</tr>
+</table>
+</div>	
+					<li class="putInTitle" id="adapter-support">Adapter Support : </li>
+				
+				<ol>
+					<li style="font-weight:bold;">Existing adapter : </li>
+OpenOCD ships with predefined list of well known adapters (OESdebug reports the number), the possibility of finding our adapter in the list is high. In this case, We only need to choose the correct adapter config file in the list (which corresponds to our adapter).
+
+<div style="text-align:center;">
+<img src="img/existing-adapter-found.png" alt="Adapter exists in supported by OpenOCD" width="350px"/>
+				</div>					
+
+<p style="color:green;text-align:center;">Always try to find your adapter in the list before trying to create one</p>
+	
+					<li style="font-weight:bold;">Create a custom adapter : </li> If The adapter is not defined in OpenOCD, We can create it. <em style="color:red;">The adapter must be compliant to one of the protocols supported by OpenOCD</em>. Let's see the steps to add a new adapter :
+					
+					<ul>
+						<li><strong>Interface protocol :</strong> Select the protocol supported by your adapter</li>		
+			<div style="text-align:center;">
+<img src="img/supported-protocol.png" alt="Adapter exists in supported by OpenOCD" width="350px"/></div>
+			
+						<li><strong>Manufacturer, Vendor ID, Product ID : </strong></li> Plug the adapter to the computer, then click on "Find my Adapter pid,vid and manufacturer" and select your adapter from the list.
+<div style="text-align:center;">
+<img src="img/detected-devices-linux.png" alt="Selecting my adapter from the list of detected devices" width="450px"/></div>
+Once the device is selected, the fields(Manufacturer, Vendor ID and Product ID) will be filled by OESdebug. 
+<div style="text-align:center;">
+<img src="img/creating-new-adapter-oesdebug.png" alt="Manufacturer, Vendor ID and Product ID filled by OESdebug" width="450px"/></div>
+	
+		<li><strong>Adapter interface speed : </strong></li> Check the documentation of your manufacturer to get theis value. If this is not available, it is always safe to use a low speed (typically 8 as it is the default).
+
+					</ul>
+		
+				</ol>
+					
+			
+
+<br/>
+<div>
+<table>
+	<tr><th>Button</th><th>Function</th></tr>
+
+	<tr>
+		<td class="showInTable">
+			Previous	
+		</td> 
+		
+		<td>
+			Moves back to OpenOCD Support
+		</td>
+	</tr>
+
+
+	<tr>
+		<td class="showInTable">
+			Test Your Adapter with OpenOCD		
+		</td> 
+		
+		<td>
+			Used to test if OpenOCD is able to detect the adapter
+		</td>
+	</tr>
+
+	<tr>
+		<td class="showInTable">
+			Next		
+		</td> 
+		
+		<td>
+			Moves to MCU Support
+		</td>
+	</tr>
+</table>
+</div>	
+			
+
+
+					<li class="putInTitle" id="MCU-Support">MCU Support : </li> Once the adapter was configured, We need to configure the target.
+	<ol>
+		<li><strong>Existing MCU or board : </strong></li> OpenOCd differentiates between Target and Board files. OESdebug makes it very easy, We only need to select what We are interrested in. 
+		<div style="text-align:center;">
+<img src="img/MCU-found-oesdebug.png" alt="Selecting Board or MCU with OESdebug" width="450px"/></div>
+
+		<li><strong>Create a custom chip : </strong></li> If our board or our chip (CPU, DSP, ..., etc) cannot be found from the <em>Existing MCU or board</em>. We must create it :
+		<ul>
+				<li><strong>Define new SOC :</strong> We must indicate to OpenOCD some of the characteristics of our Chip.</li> 
+<div style="text-align:center;">
+<img src="img/create-new-chip-oesdebug.png" alt="Defining a new chip" width="450px"/></div>
+
+		<ul>
+			<li><strong>CHIP Name :</strong> The name of your chip (the one written of the top of your microprocesor or your DSP).</li> 
+			<li><strong>CHIP Type :</strong> type of the chip (CPU, DSP, ..etc)</li> 
+			<li><strong>CHIP Family :</strong> the architecture of the chip</li> 
+
+			<li><strong>Length of instruction register (IR) :</strong> This is crucial for a proper operation of OpenOCD. We can get it from manufacturer documentation or try to dicover it using OpenOCD autoprobe function (see how to do it with OESdebug)</li> 
+			<li><strong>Endianness of Chip :</strong> Look to manufacturer documentation, by default OpenOCD considers this parameter to be <mark>little indian</mark></li>
+		</ul>
+		
+				<li><strong>Enable Memory Config :</strong> </li> We can even configure the memory by checking this box. Now, We need information that are completly specific to vendors.
+<div style="text-align:center;">
+<img src="img/config-memory-oesdebug.png" alt="Configuring target's memory" width="450px"/></div>
+			<ul>
+				<li>Memory settings : Some chips have an internal SDRam, it is recommanded to include it. It speeds up operations of OpenOCD</li>
+					<ul>
+						<li><strong>Starting work area :</strong> We must indicate where our memory is mapped</li>
+
+						<li><strong>Size of work area :</strong> size of the mapping</li> 
+
+						<li><strong>Type of Adresses :</strong> We must indicate if the addresses are <em>physical</em> or <em>virtual</em> (MMU is present on the target)</li>
+
+						<li><strong>Back-up work area :</strong> </li>
+					</ul>
+				<li>Flash memory : </li>
+				
+			</ul>
+
+
+		</ul>
+	</ol>	
+		
+			
+
+					<li class="putInTitle" id="config-file">Config File : </li>Allows to generate or update (adding more options not provided by OESDebug) the configuration file "openocd.cfg" (generated at the root directory of OESDbug)
+<br/>
+<div>
+<table>
+	<tr><th>Button</th><th>Function</th></tr>
+
+	<tr>
+		<td class="showInTable">
+			Previous	
+		</td> 
+		
+		<td>
+			Moves back to MCU Support
+		</td>
+	</tr>
+
+
+	<tr>
+		<td class="showInTable">
+			Generate File		
+		</td> 
+		
+		<td>
+			Creates the configuration file using the previous settings in "Adapter Support" and "MCU Support".
+<div style="text-align:center;">
+<img src="img/Generated-config-file.png" alt="Generating Config file" width="450px"/></div>
+		
+		</td>
+	</tr>
+
+	<tr>
+		<td class="showInTable">
+			Update file		
+		</td> 
+		
+		<td>
+			We can always add more specific target commands to the generated Config file. In this case, We need to use this button to save the changes into <em style="color:green;">openocd.cfg</em> file
+		</td>
+	</tr>
+
+	<tr>
+		<td class="showInTable">
+			Start OpenOCD		
+		</td> 
+		
+		<td>
+			Now, it's time to call OpenOCD <em>(OESdebug takes care on the correct way to do it)</em>. Write down your admin password and enjoy debugging. 
+<div style="text-align:center;">
+<img src="img/at32uc3c0512c-found-openocd.png" alt="Device found" width="450px"/></div>
+
+		</td>
+
+		
+	</tr>
+
+	<tr>
+		<td class="showInTable">
+			Save Config File
+		</td>
+
+		<td>
+			By default, OESdebug can store the config files in one of it's directories "<em>savedConfig/</em>" (this is recommanded, as We have write permissions). We only need to provide the filename (in the example below it is <em>test</em>). Then click on <em>Save file</em>.
+			<div style="text-align:center;">
+<img src="img/save-config-for-later.png" alt="Save config files" width="450px"/></div>
+	<p style="">This will generate two files (test.cfg and test.oes in our example above). cfg files can be fed to OpenOCD and oes file is used to load the configuration made to create our cfg files (It is good to share our work with other people in the community)</p>		
+		</td>
+
+	</tr>
+</table>
+</div>	
+
+		<li class="putInTitle" id="Menu-bar">Menu bar : </li>
+
+			<ul>
+				<li><strong>File : </strong> Allow some common operations to be made, let's have a look at them : </li>
+					<ul>
+						<li><strong>Load config : </strong> Allows to load cfg and oes files, We can share our scripts and allow other people to look at the configuration We made in GUI friendly way.</li>
+					</ul>
+				<li><strong>Tools : </strong> This section helps to write OpenOCD scripts by exposing some of the features in OpenOCD</li>
+					<ul>
+						<li><strong>Discover TAP ID : </strong>Connect the target platform with the dongle and then fire this option. OpenOCD will try to discover the TAP ID and the length of Intruction Register(IR).<br/>
+The files "cfg" and "oes" are generated from the configuration tab. The cfg file is used for OpenOCD and oes file (which is made relative to the cfg file) to <mark>populate the GUI of OESdebug</mark>.<br/>
+<span style="color:red">Remember: Both files (cfg and oes) are created at the same time.</span>
+
+
+<div style="text-align:center;">
+<img src="img/import-cfg-oes-files.png" alt="Importing cfg and oes files into OESdebug" width="450px"/></div>
+
+<span style="color:green;">We only need to import the cfg file, the oes file will be loaded too (as they have the same name)</span>
+
+</li>
+					</ul>
+
+				<li><strong>Help : </strong></li>
+					<ul>
+						<li><strong>Tutorial : </strong> For documentation</li>
+
+						<li><strong>About Devs : </strong>to keep in touch with developers, provide features and bug fixes.</li> 
+					</ul>
+				
+			</ul>
+
+				<ol>				
+			</section>
+		</article>
+	
+<footer><p style="float:right;font-weight:bold;">SMILE OpenSource Solution - Copyright@2018</p></footer>
+		
+	</body>	
+
+</html>

@@ -1,0 +1,7 @@
+cfi;flash bank $_FLASHNAME cfi 0x00000000 0x01000000 2 2 $_TARGETNAME
+jtagspi;target create $_TARGETNAME testee -chain-position $_CHIPNAME.fpga
+xcf; 
+lpcspifi;flash bank $_FLASHNAME lpcspifi 0x14000000 0 0 0 $_TARGETNAME
+stmsmi;flash bank $_FLASHNAME stmsmi 0xf8000000 0 0 0 $_TARGETNAME
+mrvlqspi;flash bank $_FLASHNAME mrvlqspi 0x0 0 0 0 $_TARGETNAME 0x46010000
+ath79;flash bank $_FLASHNAME ath79 0 0 0 0 $_TARGETNAME

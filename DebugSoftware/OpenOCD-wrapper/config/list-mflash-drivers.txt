@@ -1,0 +1,2 @@
+s3c2440;mflash bank $_FLASHNAME s3c2440 0x10000000 1b 0
+pxa270;mflash bank $_FLASHNAME pxa270 0x08000000 43 0

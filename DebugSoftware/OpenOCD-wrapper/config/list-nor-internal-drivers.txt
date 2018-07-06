@@ -1,0 +1,37 @@
+aduc702x;flash bank $_FLASHNAME aduc702x 0 0 0 0 $_TARGETNAME
+ambiqmicro;flash bank $_FLASHNAME ambiqmicro 0 0x00040000 0 0 $_TARGETNAME
+at91samd; 
+at91sam3;flash bank $_FLASHNAME at91sam3 0x00080000 0 1 1 $_TARGETNAME
+at91sam4; 
+at91sam41; 
+atsamv; 
+at91sam7;flash bank $_FLASHNAME at91sam7 0 0 0 0 $_TARGETNAME
+avr; 
+bluenrg-x;flash bank $_FLASHNAME bluenrg-x 0 0 0 0 $_TARGETNAME
+efm32;flash bank $_FLASHNAME efm32 0 0 0 0 $_TARGETNAME
+fm3;flash bank $_FLASHNAME fm3 0 0 0 0 $_TARGETNAME
+fm4;flash bank ${_FLASHNAME}0 fm4 0x00000000 0 0 0 $_TARGETNAME S6E2CCAJ0A
+kinetis;flash bank $_FLASHNAME kinetis 0 0 0 0 $_TARGETNAME
+kinetis_ke;flash bank $_FLASHNAME kinetis_ke 0 0 0 0 $_TARGETNAME
+lpc2000;flash bank $_FLASHNAME lpc2000 0x0 0x7d000 0 0 $_TARGETNAME
+lpc288x;flash bank $_FLASHNAME lpc288x 0 0 0 0 $_TARGETNAME 12000000
+lpc2900;flash bank $_FLASHNAME lpc2900 0 0 0 0 $_TARGETNAME 125000
+mdr; 
+niietcm4;flash bank $_FLASHNAME niietcm4 0 0 0 0 $_TARGETNAME
+nrf5;flash bank $_FLASHNAME nrf5 0 0x00000000 0 0 $_TARGETNAME
+ocl;flash bank $_FLASHNAME ocl 0 0 0 0 $_TARGETNAME
+pic32mx;flash bank $_FLASHNAME pix32mx 0x1fc00000 0 0 0 $_TARGETNAME
+psoc4;flash bank $_FLASHNAME psoc4 0 0 0 0 $_TARGETNAME
+psoc6;flash bank main_flash_cm0 psoc6 0x10000000 0 0 0 ${TARGET}.cm0
+sim3x;flash bank $_FLASHNAME sim3x 0 $_CPUROMSIZE 0 0 $_TARGETNAME
+stellaris;flash bank $_FLASHNAME stellaris 0 0 0 0 $_TARGETNAME
+stm32f1x;flash bank $_FLASHNAME stm32f1x 0 0 0 0 $_TARGETNAME
+stm32f2x;flash bank $_FLASHNAME stm32f2x 0 0 0 0 $_TARGETNAME
+stm32h7x;flash bank $_FLASHNAME stm32h7x 0 0 0 0 $_TARGETNAME
+stm32lx;flash bank $_FLASHNAME stm32lx 0 0 0 0 $_TARGETNAME
+stm32l4x;flash bank $_FLASHNAME stm32l4x 0 0 0 0 $_TARGETNAME
+str7x;flash bank $_FLASHNAME str7x 0x40000000 0x00040000 0 0 $_TARGETNAME STR71x
+str9x;flash bank $_FLASHNAME str9x 0x40000000 0x00040000 0 0 $_TARGETNAME
+str9xpec; 
+tms470; 
+xmc1xxx; 

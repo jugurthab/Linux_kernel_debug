@@ -1,0 +1,9 @@
+at91sam9;nand device $NANDFLASH at91sam9 $CHIPNAME 0x40000000 0xfffffe800
+davinci;nand device davinci dm355.arm 0x02000000 hwecc4 0x01e10000
+mx3;nand device mx35.nand mxc imx35.cpu mx35 hwecc biswap
+mxc;nand device mx35.nand mxc imx35.cpu mx35 hwecc biswap
+s3c2410;nand device s3c2410.nand s3c2410 $CHIPNAME 0x00000000 0x000000000
+s3c2412;nand device s3c2410.nand s3c2410 $CHIPNAME 0x00000000 0x000000000
+s3c2440;nand device s3c2410.nand s3c2410 $CHIPNAME 0x00000000 0x000000000
+s3c2443;nand device s3c2410.nand s3c2410 $CHIPNAME 0x00000000 0x000000000
+s3c6400;nand device s3c2410.nand s3c2410 $CHIPNAME 0x00000000 0x000000000
