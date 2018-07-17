@@ -1,7 +1,7 @@
 ﻿
 # CMPTracers - GUI
 
-CMPTracers - GUI is a GUI utility that facilitates the use of  **[OpenOCD](http://openocd.org/)** to display reports that compares different tracers.   
+CMPTracers - GUI is a GUI utility used to parse and display reports produced by **ftrace-perf-lttng-benchmarker** that compare different tracers.
 
 # Installation
 
