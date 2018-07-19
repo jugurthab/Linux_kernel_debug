@@ -1,0 +1,2 @@
+#Adapter_Found,ftdi/olimex-arm-usb-tiny-h
+#CHIP_Not_Found,at32uc3c-ek,cpu,avr32_ap7k,5,little,0x124578
