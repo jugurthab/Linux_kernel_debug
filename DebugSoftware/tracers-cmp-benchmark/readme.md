@@ -9,16 +9,16 @@
 
 ## Compile QSort sources
 Qsort is the reference program used with the different tracers
-> gcc -o qsort qsort.cpp
+> $ gcc -o qsort qsort.cpp
 ## Compile benchmarker sources
 
 **ftrace-perf-lttng-benchmarker** launches QSort and attaches the tracers to collect their overhead.
 
-> gcc -o ftrace-perf-lttng-benchmarker ftrace-perf-lttng-benchmarker.c
+> $ gcc -o ftrace-perf-lttng-benchmarker ftrace-perf-lttng-benchmarker.c
 
 # Usage : Collect tracers overhead
 ftrace-perf-lttng-benchmarkercan be started (make sure to install the tracers before) :
-> ./ftrace-perf-lttng-benchmarker [select-tracer] [number_of_tests_to perform]
+> $ ./ftrace-perf-lttng-benchmarker [select-tracer] [number_of_tests_to perform]
 
 Where :
 
@@ -27,7 +27,7 @@ Where :
  
  As an example, to measure the overhead of all tracers and repeat the test for 10 times : 
  
-    ./ftrace-perf-lttng-benchmarker 4 10
+> $ sudo ./ftrace-perf-lttng-benchmarker 4 10
 
 
 # Feedbacks
