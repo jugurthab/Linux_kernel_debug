@@ -10,6 +10,7 @@ logger = logging.getLogger('logger-lttng')
 
 click_counter=0
 
+# Creating a TKinter window
 myWindow = tk.Tk()
 myWindow.title("LTTng recorded window")
 
@@ -37,4 +38,4 @@ LABEL_Text_Counter.grid(row=2,column=1,padx=10,pady=10)
 SMILE_Click_Button = tk.Button(master=myWindow, text="Send log",command=ChangeTitle)
 SMILE_Click_Button.grid(row=2,column=0,padx=10,pady=10)
 
-myWindow.mainloop()
+myWindow.mainloop() # start python GUI
