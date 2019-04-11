@@ -1,6 +1,6 @@
-# linux-tools
+# Linux_kernel_debug
 
-**linux-tools** is a software based support for the internship report entitled "Debugging Linux Kernel" .    It gathers all developed Open Source software and code examples (used for illustrations).
+**Linux_kernel_debug** is a collection of debugging mechanisms experimented during the internship "Debugging Linux Kernel" at SMILE OpenSource.
 
 # Repository organization
 Broken down into Two different folders :
